@@ -3,7 +3,7 @@ version: '2.4'
 services:
   postgresql:
     container_name: postgresql
-    image: postgres:9.6-alpine
+    image: postgres:13.0-alpine
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_DB: ${POSTGRES_DB}
@@ -12,7 +12,6 @@ services:
     volumes:
        - ./files2docker/scripts:/scripts
        - ${LOCAL_PGDATA-./files2docker/databases}:/var/lib/postgresql/data
-       - ${BACKUP_PATH-./files2docker/backup}:/backup
     ports:
       - ${POSTGRES_PORT-5432}:5432
     restart: unless-stopped
